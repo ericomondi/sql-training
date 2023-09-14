@@ -59,3 +59,35 @@ ORDER BY Total_Amount DESC;
 (in terms of products ordered).
 
 
+SELECT s.SupplierName, SUM(od.Quantity) AS ProductsSupplied
+FROM Products AS p
+JOIN Suppliers AS s ON s.SupplierID = p.SupplierID
+JOIN OrderDetails AS od ON od.ProductID = p.ProductID
+GROUP BY s.SupplierName
+ORDER BY ProductsSupplied DESC
+LIMIT 1;
+
+
+8.Find the total sales of each product.
+
+SELECT p.ProductName, SUM(od.Quantity * p.Price) AS TotalSales
+FROM Products AS p
+JOIN OrderDetails AS od ON od.ProductID = p.ProductID
+GROUP BY p.ProductName
+ORDER BY TotalSales DESC;
+
+9.Find the best performing month in the business in terms of sales. 
+Hint: Use substr() on the date to slice
+
+
+SELECT SUBSTR(OrderDate, 6, 2) AS SalesMonth, SUM(Quantity * Price) AS TotalSales
+FROM Orders AS o
+JOIN OrderDetails AS od ON o.OrderID = od.OrderID
+JOIN Products AS p ON od.ProductID = p.ProductID
+GROUP BY SalesMonth
+ORDER BY TotalSales DESC;
+
+10.Find the total sales per day.
+
+
+
