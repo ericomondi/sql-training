@@ -59,8 +59,10 @@ WHERE OrderDate BETWEEN '1996-10-01' AND '1996-10-31' ORDER BY OrderDate;
 
 9.Find the total orders shipped by each of the 3 shippers.
 
-SELECT COUNT (OrderID) FROM Orders 
-GROUP BY ShipperID;
+SELECT s.ShipperName, COUNT (o.OrderID) AS TotalOrders
+FROM Orders AS o
+JOIN Shippers AS s ON s.ShipperID = o.ShipperID
+GROUP BY s.ShipperID;
 
 
 10.Display products whose price is above 25.
