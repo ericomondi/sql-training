@@ -1,0 +1,61 @@
+Data mining Using SQL
+READ MORE ON SQL AND ANSWER THE BELOW QUESTIONS USING THIS DATABASE
+https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_all
+
+1.Display a single relation with: OrderId, OrderDate, CustomerName, City, Address, 
+PostalCode, ShipperName, ProductName, Quantity.
+
+SELECT c.CustomerName, c.City, c.Address, c.PostalCode, o.OrderID,
+p.ProductName, od.Quantity, s.ShipperName,o.OrderDate
+FROM Customers AS c
+JOIN Orders AS o ON o.CustomerID = c.CustomerID
+JOIN OrderDetails AS od ON od.OrderID = o.OrderID
+JOIN Shippers AS s ON s.ShipperID = o.ShipperID
+JOIN Products AS P ON p.ProductID = od.ProductID;
+
+2.Display all products ever been ordered and display the shipper name.
+
+
+SELECT p.ProductName AS OrderedProdcuts, s.ShipperName
+FROM OrderDetails AS od
+JOIN Products AS p ON p.ProductID = od.ProductID
+JOIN Orders AS o ON o.OrderID = od.OrderID
+JOIN Shippers AS s ON s.ShipperID = o.ShipperID
+
+3.Display the count of all products shipped by each of the 3 shippers.
+
+SELECT  s.ShipperName, COUNT(p.ProductName) AS TotalOrders
+FROM OrderDetails AS od
+JOIN Products AS p ON p.ProductID = od.ProductID
+JOIN Orders AS o ON o.OrderID = od.OrderID
+JOIN Shippers AS s ON s.ShipperID = o.ShipperID
+GROUP BY s.ShipperName;
+
+4. How many customers DO NOT have the words ‘son’ in their CustomerName.
+
+SELECT COUNT(CustomerName) AS Total FROM Customers
+ WHERE CustomerName NOT LIKE '%son%'
+
+5.Find the total sales made in the year 1997.
+
+SELECT SUM(od.Quantity * p.Price) AS Total 
+FROM Products AS p
+JOIN OrderDetails AS od ON od.ProductID = p.ProductID
+JOIN Orders AS o ON o.OrderID = od.OrderID
+WHERE OrderDate LIKE "%1997%";
+
+6.Display each customer_name and total_amount 
+ever spent in the business, from highest amount.
+
+SELECT c.CustomerName, ROUND(SUM(od.Quantity * p.Price), 2) AS Total_Amount
+FROM Orders AS o 
+JOIN Customers AS c ON o.CustomerID = c.CustomerID
+JOIN OrderDetails AS od ON o.OrderID = od.OrderID
+JOIN Products AS p ON od.ProductID = p.ProductID
+GROUP BY C.CustomerName
+ORDER BY Total_Amount DESC;
+
+7.Find the top supplier of the business 
+(in terms of products ordered).
+
+
