@@ -92,21 +92,21 @@ ORDER BY TotalSales DESC;
 10.Find the total sales per day
 
 answer::
-SELECT OrderDate,SUM(OD.Quantity * P.Price) AS TotalSales
-FROM Orders O
-JOIN OrderDetails OD ON O.OrderId = OD.OrderId
-JOIN Products P ON OD.ProductId = P.ProductId
+SELECT OrderDate,SUM(od.Quantity * p.Price) AS TotalSales
+FROM Orders o
+JOIN OrderDetails od ON o.OrderId = od.OrderId
+JOIN Products p ON od.ProductId = p.ProductId
 GROUP BY OrderDate;
 
 11.Find the total Sales for each Customer, the ones who have never ordered leave as 0.
 
 answer::
-SELECT C.CustomerName,IFNULL(SUM(OD.Quantity * P.Price), 0) AS TotalSales
-FROM Customers C
-LEFT JOIN Orders O ON C.CustomerId = O.CustomerId
-LEFT JOIN OrderDetails OD ON O.OrderId = OD.OrderId
-LEFT JOIN Products P ON OD.ProductId = P.ProductId
-GROUP BY C.CustomerName;
+SELECT c.CustomerName,IFNULL(SUM(od.Quantity * p.Price), 0) AS TotalSales
+FROM Customers c
+LEFT JOIN Orders o ON c.CustomerId = o.CustomerId
+LEFT JOIN OrderDetails od ON o.OrderId = od.OrderId
+LEFT JOIN Products p ON od.ProductId = p.ProductId
+GROUP BY c.CustomerName;
 
 12.In the same database, create the table payments and determine the foreign key,
  any relevant columns and their respective data types. Insert at least 5 records.
