@@ -1,0 +1,61 @@
+SQL NOTES
+
+KEY POINTS
+1.
+Workbook - Database - iebc_db
+Worksheet - Table  - pres_cands,counties,reg_voters 
+Columns - Field/Column -
+Rows - Records/Rows - 
+
+2.
+IF IT CANT BE DONE IN EXCEL 
+IT CANT BE DONE IN DBS
+
+3.
+SQL -Structured Query Language
+Its a language that is used to transact databases.Strict in data
+types.Define non-null.Data completeness.Validation.
+e.g
+Creating dbs, tables, rows in tables, delete table
+MySQL, PostgreSQL, MSSQL, SQLite, MariaDb - Open source
+Oracle - Enterprise/Licensable
+
+NoSQL - Data is stored as a dictionary, JSON object. If a  key is
+there or not its okay. It will be accomodated.
+MongoDB, Cassandra - NoSQL
+Firebase - Enterprise 
+
+4.
+Limitations and Strengths
+i. Row limit
+Worksheet max rows - 1,048,576
+SQL Table -A special column that uniquely identifies a row called primary key.
+((2^64)/2 - 1) - If 
+bbm/23/222
+
+ii. Security
+Worksheet -Can only secure a workbook.
+Excel table - User priviledges, CreateReadUpdateDelete on a table or databases
+
+iii. Data type
+Worksheet - Image
+SQL table - Every data type is accomodated.
+
+5
+RDBMS - Relational Database Management System.
+SQL ONLY RUNS ON RDBMS.
+Relational - Every table must relate to at least one other 
+table. In either parent -> child. A table can be both.
+Examples: Naivas
+
+
+NOTE THIS WHEN CREATING AN ERD
+
+
+CREATE ERD(Entity Relationship Diagram)
+1. Define the entities customers, sales, tenders... 
+2. Highlight all parents, keep them at the top.
+3. Connect the entities define the relationship
+4. Define primary keys
+5. Define relationships and foreign keys
+6. Define other columns
